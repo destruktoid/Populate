@@ -6,6 +6,9 @@ _freqCombo = _display displayCtrl 2110;
 _radEdit = _display displayCtrl 1410;
 _countEdit = _display displayCtrl 1411;
 
+_radEdit ctrlSettext "50";
+_countEdit ctrlSettext "2";
+
 {
     _text = getText (configFile >> "SOR_PopulateUnits" >> _x >> "name");
     _index = _factionList lbAdd _text;
@@ -14,7 +17,11 @@ _countEdit = _display displayCtrl 1411;
     _factionList lbSetData [_index,_x];
 } foreach ((configFile >> "SOR_PopulateUnits") call bis_fnc_getCfgSubClasses);
 
+_factionList lbSetCurSel 0;
+
 for "_i" from 1 to 10 do {
     _index = _freqCombo lbAdd (format ["%1%2",(_i * 10),"%"]);
     _freqCombo lbSetData [_index,str(_i)];
 };
+
+_freqCombo lbSetCurSel 0;

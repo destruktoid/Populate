@@ -17,6 +17,11 @@ _selRadius = parseNumber ctrlText _radEdit;
 _selCount = parseNumber ctrlText _countEdit;
 
 
+if (_selRadius == 0 || _selCount == 0) exitwith {
+    systemchat "Radius or count not set";
+};
+
+
 [_pos,["house"],_selFaction,_selRadius,_selCount,_selFreq,player] remoteExec ["DEST_fnc_populate",2];
 
 deleteVehicle _module;
