@@ -5,7 +5,7 @@ class CfgPatches
         author = "destruktoid";
         units[] = {"DEST_moduleBasePop","DEST_modulePopulate"};
         requiredVersion = 1.0;
-        requiredAddons[] = {"A3_Modules_F","A3_Modules_F_Curator"};
+        requiredAddons[] = {"A3_Modules_F","A3_Modules_F_Curator","160th_SOR_Loadouts"};
     };
 };
 
