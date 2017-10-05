@@ -55,7 +55,7 @@ class CfgVehicles
         category = "NO_CATEGORY";
         function = "DEST_fnc_fake";
         functionPriority = 1;
-        isGlobal = 2;
+        isGlobal = 0;
         isDisposable = 0;
     };
     
