@@ -17,6 +17,12 @@ _cfgName = getText (configFile >> "SOR_PopulateUnits" >> _faction >> "name");
 _cfgSide = switch ((_cfgName select [0,1])) do {case "B":{west}; case "O":{east}; case "I":{independent}; case "C":{civilian};};
 _build = nearestObjects [_pos,_type,_rad];
 
+{
+    if ((count ([_x] call bis_fnc_buildingPositions)) < 1) then {
+        _build deleteAt (_build find _x);
+    };
+} foreach _build;
+
 if (count _build > 5) then {
     _buildN = [];
     {
@@ -43,6 +49,7 @@ _units = [];
             _units pushback _unit;
         };
     };
+    sleep 0.2;
 } foreach _build;
 
 
