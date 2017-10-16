@@ -1,6 +1,6 @@
 class CfgPatches
 {
-    class 160_Populate
+    class 160thSOR_Populate
     {
         author = "destruktoid";
         units[] = {"DEST_moduleBasePop","DEST_modulePopulate"};
@@ -21,7 +21,7 @@ class CfgFunctions
         tag = "DEST";
         class pop
         {
-            file = "160_Populate\functions";
+            file = "160thSOR_Populate\functions";
             class popLoad {};
             class populate {};
             class popMenu {};
