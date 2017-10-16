@@ -24,7 +24,11 @@ if (_selRadius == 0 || _selCount == 0) exitwith {
 
 [_pos,["house"],_selFaction,_selRadius,_selCount,_selFreq,player] remoteExec ["DEST_fnc_populate",2];
 
-deleteVehicle _module;
+if (is3DEN) then {
+    delete3DENEntities [_module];
+} else {
+    deleteVehicle _module;
+};
 closeDialog 63100;
 
 missionNamespace setVariable ["SOR_POP_MODULE",nil];

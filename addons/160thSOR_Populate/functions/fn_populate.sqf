@@ -44,19 +44,24 @@ _units = [];
         _point = selectrandom _points;
         if (!isNil "_point") then {
             _points deleteAt (_points find _point);
-            _unit = _grp createUnit [(selectRandom _cfgUnits),_point,[],0,"NONE"];
-            _unit disableAi "PATH";
-            _units pushback _unit;
+            if (is3DEN) then {
+                _unit = _grp create3DENEntity ["Object",(selectRandom _cfgUnits),_point];
+                _unit set3DENAttribute ["Init","this disableAi 'PATH'"];
+                _dir = [0,0,(random 360)];
+                _unit set3DENAttribute ["Rotation",_dir];
+            } else {
+                _unit = _grp createUnit [(selectRandom _cfgUnits),_point,[],0,"NONE"];
+                _unit disableAi "PATH";
+                _unit setDir (random 360);
+                _units pushback _unit;
+            };
         };
     };
     sleep 0.2;
 } foreach _build;
 
-
-
-
 if (!(_player isEqualTo objNull)) then {
     (getAssignedCuratorLogic _player) addCuratorEditableObjects [_units,false];
-    _strN = format ["%1 units created in %2 buildings",(count _units),(count _build)];
+    _strN = format ["%1 units created",(count _units)];
     ["TaskSucceeded",["",_strN]] remoteexec ["bis_fnc_showNotification", _player];
 };

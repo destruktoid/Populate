@@ -62,7 +62,9 @@ class CfgVehicles
     class DEST_modulePopulate: DEST_moduleBasePop
     {
         displayName = "Building Populator";
+        scope = 2;
         scopeCurator = 2;
+        is3DEN = 1;
         function = "DEST_fnc_popMenu";
     };
 };
